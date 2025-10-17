@@ -1,47 +1,24 @@
-const fs = require("fs")
-const { measureMemory } = require("vm")
+const http = require('http');
+const fs = require('fs');
+const path = require('path');
+const EventEmitter = require('events');
 
-//CRUD
+// Crear instancia de EventEmitter
+const emitter = new EventEmitter();
 
+// Archivo base de operaciones
+const filePath = path.join(__dirname, 'archivo.txt');
 
-// CREATE
+// Archivo de logs
+const logPath = path.join(__dirname, 'log.txt');
 
+/*
 
-//write
-/*fs.writeFile ("inicianado archivo en node, hola mundo!!",(err)=>{
-    //si hay error
-    if(err) throw err;
-    //mensaje exito
-    console.log("archivo creado con exito!!");
+// Delete - Eliminar un archivo
+fs.unlink('archivo.txt', (err) => {
+  if (err) throw err;
+  console.log('El archivo ha sido eliminado');
 });
 */
 
-//READ
-// fs.readFile ("messages.txt","utf-8",(err, data)=>{
-//    //si hay error 
-//     if(err) throw err;
-
-//     // mensaje exito
-//     console.log("los meNsajes del archivo son: /h",data);
-
-// });
-
-//UPDATA
-/fs.appendFile("messages.txt","\h nueva linea de archivo...",(err, data)=>{
-   //si hay error 
-    if(err) throw err;
-
-    // mensaje
-    console.log("archivo actualizado!!");
-
-});
-
-//DELETE
-// fs.unlink("messages.txt",(err, data)=>{
-//    //si hay error 
-//     if(err) throw err;
-
-//     // mensaje exito
-//     console.log("El archivo fue eliminado!!");
-
-// });
+// Verificar si un archivo existe

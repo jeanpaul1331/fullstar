@@ -1,14 +1,14 @@
-const http = require("http");
-const math = require("./math");
-const fs = require("fs");
+// Importar módulos necesarios
+const http = require('http');
+const { stringify } = require('querystring');
 
-
-const server = http.createServer((req,res) =>{
-    res.writehead(200,{"content-type":"text/plain"}),
-    res.end("hola mundo !!desde servidor con node.js")
-});
-server.listen(3000,() =>{
-    console.log("server running at http://localhost:3000");
-    console.log("este es el resultado de la multiplicacion", math.multiply(4,3));
+// Crear el servidor
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('Hola mundo desde el servidor con Node.js\n');
 });
 
+// Iniciar el servidor en el puerto 3000
+server.listen(3000, () => {
+  console.log('Servidor corriendo en http://localhost:3000');
+});
